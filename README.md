@@ -1,5 +1,6 @@
 # USTC-kms
 
+**用于激活Windows和Office组件的kms脚本**
 基于[官方激活脚本](http://zbh.ustc.edu.cn/msiso/UstcKms.bat)进行修改，对Office的激活过程进行了以下优化
 
 * 不再需要右键管理员运行，现在双击运行脚本可以自动申请管理员权限啦(๑•̀ㅂ•́)و✧
