@@ -1,9 +1,9 @@
-@title 中国科学技术大学正版软件非官方激活脚本
+@title 中国科学技术大学正版软件激活脚本
 @echo.========================================================================
-@echo by cutecutecat
+@echo 中国科学技术大学正版软件激活脚本
+@echo modified by starkind
 @echo.========================================================================
 @echo.
-@echo off
 @echo off
 
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
@@ -77,14 +77,24 @@ rem Office 2016 Pro Plus
 @echo.=======================================================================
 pause
 @echo.
+set file=OSPP.VBS
 FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\16.0\Word\InstallRoot" /v Path`) DO (
     set appdir=%%A %%B
     )
-set file=OSPP.VBS
+
+if "%appdir:~-1%"==" " (set appdir=%appdir:~0,-1%)
 set vbs=%appdir%%file%
-@echo %appdir%
+if exist "%vbs%" goto b
+
+FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Office\16.0\Word\InstallRoot" /v Path`) DO (
+    set appdir=%%A %%B
+    )
+echo %appdir:~,-1%
+if "%appdir:~-1%"==" " (set appdir=%appdir:~0,-1%)
+set vbs=%appdir%%file%
 @echo %vbs%
 if exist "%vbs%" goto b
+
 @echo.
 @echo.=======================================================================
 echo 未检测到Office 2016
@@ -100,14 +110,24 @@ rem Office 2013 Pro Plus
 @echo.=======================================================================
 pause
 @echo.
-FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\13.0\Word\InstallRoot" /v Path`) DO (
+set file=OSPP.VBS
+FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\15.0\Word\InstallRoot" /v Path`) DO (
     set appdir=%%A %%B
     )
-set file=OSPP.VBS
+
+if "%appdir:~-1%"==" " (set appdir=%appdir:~0,-1%)
 set vbs=%appdir%%file%
-@echo %appdir%
+if exist "%vbs%" goto b
+
+FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Office\15.0\Word\InstallRoot" /v Path`) DO (
+    set appdir=%%A %%B
+    )
+echo %appdir:~,-1%
+if "%appdir:~-1%"==" " (set appdir=%appdir:~0,-1%)
+set vbs=%appdir%%file%
 @echo %vbs%
 if exist "%vbs%" goto b
+
 @echo.
 @echo.=======================================================================
 echo 未检测到Office 2013
@@ -123,14 +143,24 @@ rem Office Office 2010 Pro Plus
 @echo.=======================================================================
 pause
 @echo.
-FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\10.0\Word\InstallRoot" /v Path`) DO (
+set file=OSPP.VBS
+FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\14.0\Word\InstallRoot" /v Path`) DO (
     set appdir=%%A %%B
     )
-set file=OSPP.VBS
+
+if "%appdir:~-1%"==" " (set appdir=%appdir:~0,-1%)
 set vbs=%appdir%%file%
-@echo %appdir%
+if exist "%vbs%" goto b
+
+FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Office\14.0\Word\InstallRoot" /v Path`) DO (
+    set appdir=%%A %%B
+    )
+echo %appdir:~,-1%
+if "%appdir:~-1%"==" " (set appdir=%appdir:~0,-1%)
+set vbs=%appdir%%file%
 @echo %vbs%
 if exist "%vbs%" goto b
+
 @echo.
 @echo.=======================================================================
 echo 未检测到Office 2010
@@ -151,7 +181,7 @@ exit
 :error
 @echo.
 @echo.===================================
-echo 无法与KMS服务器连接，请联系管理员
+echo 无法与KMS服务器连接，请检查网络
 @echo.===================================
 pause
 @echo.
