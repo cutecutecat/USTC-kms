@@ -1,2 +1,11 @@
 # USTC-kms
-A kms script for USTC windows/office activation better than offerical
+
+基于[官方激活脚本](http://zbh.ustc.edu.cn/msiso/UstcKms.bat)进行修改，对Office的激活过程进行了以下优化
+
+* 不再需要右键管理员运行，现在双击运行脚本可以自动申请管理员权限啦(๑•̀ㅂ•́)و✧
+
+* 原来的脚本需要Office安装在默认位置，否则需要用户手动修改脚本内容，现在新脚本支持从注册表查找Office安装位置啦(๑•̀ㅂ•́)و✧
+
+
+
+>注：和官方脚本一样，本脚本也仅能激活来自[中科大正版软件](http://zbh.ustc.edu.cn/zbh.php)的发行版，且用户仍然要处于校园网环境内。
